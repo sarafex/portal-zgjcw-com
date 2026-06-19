@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>信息索引 · 中国竞彩网</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5f6f8;
+      color: #1e1f2a;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(135deg, #10131f 0%, #1b1f2f 50%, #252b3f 100%);
+      color: #e7e9f0;
+      padding: 4.5rem 2rem 3.8rem;
+      text-align: center;
+      border-bottom: 1px solid #2d334a;
+      box-shadow: inset 0 -2px 6px rgba(0,0,0,0.3);
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .hero .sub {
+      font-size: 1.15rem;
+      max-width: 640px;
+      margin: 0 auto 1.2rem;
+      color: #c8ccde;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      padding: 0.35rem 1.4rem;
+      border: 1px solid #5b6380;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #b9bfd7;
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(2px);
+    }
+
+    /* 主内容区 浅色卡片 */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.8rem 1.5rem 4rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3.2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid #e9ebf2;
+      color: #1a1c2a;
+    }
+
+    .card p, .card li {
+      font-size: 1rem;
+      color: #2d3040;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card li {
+      padding: 0.45rem 0 0.45rem 1.6rem;
+      position: relative;
+    }
+
+    .card li::before {
+      content: "▹";
+      color: #3b6f8f;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .emph-link {
+      color: #1f6390;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(31, 99, 144, 0.3);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .emph-link:hover {
+      color: #0b3b5a;
+      border-bottom-color: #0b3b5a;
+    }
+
+    /* 自然段落 引用链接 */
+    .context-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.2rem 2.4rem;
+      margin: 2rem 0 1.6rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+    }
+
+    .context-section p {
+      margin-bottom: 1.1rem;
+      font-size: 1.02rem;
+    }
+
+    .context-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-mini {
+      margin-top: 2.5rem;
+      background: #f0f2f7;
+      border-radius: 24px;
+      padding: 2rem 2.2rem;
+    }
+
+    .faq-mini h3 {
+      font-weight: 500;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #1b1f2f;
+      letter-spacing: 0.3px;
+    }
+
+    .faq-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #dfe2ec;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #1e2a3a;
+    }
+
+    .faq-a {
+      color: #3e4257;
+      margin-top: 0.3rem;
+      font-size: 0.96rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #d8dce8;
+      margin: 2.5rem 0 1.5rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b7087;
+      padding: 2rem 0 1rem;
+    }
+
+    .footer-note a {
+      color: #3f6d8f;
+      text-decoration: none;
+      border-bottom: 1px dotted #9baec9;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero .sub {
+        font-size: 1rem;
+      }
+      .container {
+        padding: 1.8rem 1rem 3rem;
+      }
+      .card-grid {
+        gap: 1.2rem;
+      }
+      .card {
+        padding: 1.8rem 1.4rem;
+      }
+      .context-section {
+        padding: 1.6rem 1.2rem;
+      }
+      .faq-mini {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 3.2rem 1.2rem 2.6rem;
+      }
+      .card h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1>竞彩资料整理 · 信息索引</h1>
+    <p class="sub">
+      从赛前数据到赛后统计，从玩法介绍到规则备忘——一个相对克制的信息汇集处。
+    </p>
+    <span class="tagline">卡片式阅览 · 轻量索引</span>
+  </header>
+
+  <main class="container">
+
+    <!-- 主视觉 + 用途卡片 -->
+    <div class="card-grid">
+      <div class="card">
+        <h2>📋 主视觉 · 定位</h2>
+        <p>
+          这里并非资讯流，而是一套经过筛选的文档式卡片。围绕竞彩类目整理基本释义、赛制框架与参考路径，方便你在查阅时快速定位章节。
+        </p>
+        <p style="margin-top: 0.8rem;">
+          <a href="https://portal-zgjcw.com" class="emph-link">中国竞彩网</a> 作为信息聚合的起点之一，提供了许多可用于对比与核对的原始条目。
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>🧩 用途卡片</h2>
+        <ul>
+          <li>玩法结构速览 —— 胜平负、让球、比分、总进球、半全场</li>
+          <li>过关方式与奖金计算参考</li>
+          <li>赛事编号、场次预览与休市提示</li>
+          <li>竞彩足球 / 篮球 基础规则索引</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 第二行卡片：适合人群 + 自然链接嵌入 -->
+    <div class="card-grid">
+      <div class="card">
+        <h2>👥 适合人群</h2>
+        <ul>
+          <li>初次接触竞彩、希望了解基础规则的阅读者</li>
+          <li>需要快速核对玩法、奖金及场次定义的资料查阅者</li>
+          <li>习惯用卡片笔记整理信息，并希望保留一手来源的人</li>
+          <li>对赛事数据感兴趣，但不追求短期预测的理性用户</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🧭 自然链接段落</h2>
+        <p>
+          在整理竞彩相关信息时，许多原始定义与公告都散落在不同页面。比如你想确认某一玩法的奖金计算方式，或核对一场比赛的编号与开赛时间，直接查阅 <a href="https://portal-zgjcw.com" class="emph-link">中国竞彩网</a> 公布的官方说明会更为可靠。
+        </p>
+        <p style="margin-top: 1rem;">
+          当然，你也可以把这组卡片当作一个索引标签：先在这里形成框架认知，再通过链接去到具体条目做交叉对比。
+        </p>
+      </div>
+    </div>
+
+    <!-- 上下文段落：从资料整理和信息索引的角度 -->
+    <div class="context-section">
+      <p>
+        从资料整理的角度来看，竞彩领域的信息往往重复、过时或互相矛盾。因此，这个页面尝试做减法：只梳理那些经过核对的框架性内容——玩法名称、基础规则、过关条件、奖金上限——至于每场比赛的动态赔率与即时数据，则交给更专业的平台去承载。
+      </p>
+      <p>
+        信息索引的意义不在于提供“唯一答案”，而在于帮你搭建一个可复用的查阅习惯。当你需要确认“让球胜平负”与“胜平负”的根本区别，或者想回忆一下“M 串 N”的容错逻辑时，卡片式的结构可以降低重新搜索的成本。而 <a href="https://portal-zgjcw.com" class="emph-link">中国竞彩网</a> 上的官方文档，始终是这些索引最终应当对照的原本。
+      </p>
+      <p>
+        换句话说，这里像一本笔记的目录，真正的章节内容仍在原处。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要 克制风格 -->
+    <div class="faq-mini">
+      <h3>📌 常见索引摘要</h3>
+      <div class="faq-item">
+        <div class="faq-q">为什么卡片里没有赔率数据？</div>
+        <div class="faq-a">赔率持续变动，且不同平台存在差异。本页侧重规则索引，动态数据建议以 <a href="https://portal-zgjcw.com" class="emph-link">中国竞彩网</a> 实时页面为准。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">这些玩法说明是最新版本吗？</div>
+        <div class="faq-a">基础框架与官方规则保持一致，但具体场次、让球数、奖金调整请以官方发布为准。建议交叉核对。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">页面会更新吗？</div>
+        <div class="faq-a">不定期根据规则调整做修订。索引本身保持精简，不追逐短期热点。</div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+      <span>信息卡片 · 仅作索引参考 · </span>
+      <a href="https://portal-zgjcw.com">中国竞彩网</a>
+    </div>
+
+  </main>
+</body>
+</html>

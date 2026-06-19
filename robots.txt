@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sarafex.github.io/portal-zgjcw-com/sitemap.xml
